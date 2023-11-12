@@ -1,0 +1,49 @@
+.app{
+    width: 1850px;
+    height: 850px;
+    display: flex;
+    margin: 15px;
+}
+
+.left{
+    height: 100%;
+    width: 20%; 
+    border: 3px solid black;
+}
+
+.button_list{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button{
+    margin: 10px;
+    height: 30px;
+    width: 300px;
+}
+
+.main{
+    height: 100%;
+    width: 80%;
+    border: 3px solid black;
+}
+
+.text{
+    margin: 15px;
+    font-size: 30px;
+}
+
+.folder_list{
+    display: flex;
+}
+
+.folder{
+    display: flex;
+    border: 3px solid black;
+    width: 150px;
+    margin: 30px;
+    height: 150px;
+}
