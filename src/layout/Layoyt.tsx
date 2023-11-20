@@ -9,7 +9,7 @@ const Layoyt = () => {
           className={({ isActive }) =>
             `header_button ${isActive && "active_header_button"}`
           }
-          to="/login"
+          to="/signIn"
         >
           Логин
         </NavLink>
@@ -18,14 +18,6 @@ const Layoyt = () => {
             `header_button ${isActive && "active_header_button"}`
           }
           to="/"
-        >
-          Регистрация
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            `header_button ${isActive && "active_header_button"}`
-          }
-          to="/app"
         >
           Основа
         </NavLink>

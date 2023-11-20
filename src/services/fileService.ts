@@ -1,11 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IFile } from "../typeScripts/IFile";
 
-const token = localStorage.getItem("token");
 export const fileApi = createApi({
   reducerPath: "fileApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://file-store-fe-i3vo.vercel.app/api/files/",
+    headers: {
+      Authorization: `Bearer + ${localStorage.getItem("token")}`,
+    },
   }),
   tagTypes: ["File"],
   endpoints: (build) => ({
@@ -14,9 +16,6 @@ export const fileApi = createApi({
         url: "read/",
         method: "POST",
         body: folder,
-        headers: {
-          Authorization: `Bearer + ${token}`,
-        },
       }),
       invalidatesTags: ["File"],
     }),
@@ -26,12 +25,9 @@ export const fileApi = createApi({
       }),
       providesTags: ["File"],
     }),
-    fetchAllFile: build.query<any, string>({
+    fetchAllFile: build.query<any, any>({
       query: () => ({
         url: "my",
-        headers: {
-          Authorization: `Bearer + ${token}`,
-        },
       }),
       providesTags: ["File"],
     }),

@@ -9,7 +9,7 @@ export const userApi = createApi({
   }),
   tagTypes: ["User"],
   endpoints: (build) => ({
-    fetchRegistration: build.mutation<IUser, IUser>({
+    fetchRegistration: build.mutation<any, any>({
       query: (user) => ({
         url: "signUp",
         method: "POST",
@@ -17,7 +17,7 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    fetchLogin: build.mutation<IUser, IUser>({
+    fetchLogin: build.mutation<any, any>({
       query: (user) => ({
         url: "signIn",
         method: "POST",
