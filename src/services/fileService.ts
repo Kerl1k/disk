@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IFile } from "../typeScripts/IFile";
-
 const token = localStorage.getItem("token");
 export const fileApi = createApi({
   reducerPath: "fileApi",
@@ -9,13 +8,13 @@ export const fileApi = createApi({
   }),
   tagTypes: ["File"],
   endpoints: (build) => ({
-    fetchUploadFile: build.mutation<IFile, IFile>({
+    fetchUploadFile: build.mutation<IFile, any>({
       query: (folder) => ({
         url: "read/",
         method: "POST",
-        body: folder,
+        body: folder.dir,
         headers: {
-          Authorization: `Bearer + ${token}`,
+          Authorization: `Bearer + ${folder.token}`,
         },
       }),
       invalidatesTags: ["File"],
@@ -33,7 +32,6 @@ export const fileApi = createApi({
           Authorization: `Bearer + ${token}`,
         },
       }),
-      providesTags: ["File"],
     }),
   }),
 });

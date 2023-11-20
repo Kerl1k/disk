@@ -5,6 +5,7 @@ import { fileApi } from "../services/fileService";
 
 const App = () => {
   const [createFolder] = folderApi.useFetchCreateFolderMutation();
+  const token = localStorage.getItem("token");
   const { data: file } = fileApi.useFetchAllFileQuery("");
   const qwe = () => {
     const info: any = {

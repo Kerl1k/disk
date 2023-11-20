@@ -38,6 +38,7 @@
 
 .folder_list{
     display: flex;
+    min-height: 200px;
 }
 
 .folder{
