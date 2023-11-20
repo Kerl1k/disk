@@ -1,4 +1,3 @@
-import React from "react";
 import { IUser } from "../typeScripts/IUser";
 
 const endpoint = (user: IUser) => {

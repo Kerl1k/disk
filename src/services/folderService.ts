@@ -6,6 +6,9 @@ export const folderApi = createApi({
   reducerPath: "folderApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://file-store-fe-i3vo.vercel.app/api/files/",
+    headers: {
+      Authorization: `Bearer + ${localStorage.getItem("token")}`,
+    },
   }),
   tagTypes: ["Folder"],
   endpoints: (build) => ({
@@ -14,16 +17,12 @@ export const folderApi = createApi({
         url: "createDirectory",
         method: "POST",
         body: folder,
-        headers: {
-          Authorization: `Bearer + ${token}`,
-        },
       }),
       invalidatesTags: ["Folder"],
     }),
-    fetchAllFolder: build.query<IFolder[], string>({
+    fetchAllFolder: build.query<IFolder[], any>({
       query: (id) => ({
         url: "directoryContent/" + { id },
-        Authorization: `Bearer + ${token}`,
       }),
       providesTags: ["Folder"],
     }),

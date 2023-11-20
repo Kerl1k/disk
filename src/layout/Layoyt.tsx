@@ -1,7 +1,16 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { fileApi } from "../services/fileService";
 
 const Layoyt = () => {
+  const { isError, isLoading } = fileApi.useFetchAllFileQuery("");
+  console.log(isLoading);
+
+  if (isLoading === false) {
+    if (isError === true) {
+      console.log("HUI");
+    }
+  }
   return (
     <section>
       <div className="">
@@ -9,7 +18,7 @@ const Layoyt = () => {
           className={({ isActive }) =>
             `header_button ${isActive && "active_header_button"}`
           }
-          to="/login"
+          to="/signIn"
         >
           Логин
         </NavLink>
@@ -18,14 +27,6 @@ const Layoyt = () => {
             `header_button ${isActive && "active_header_button"}`
           }
           to="/"
-        >
-          Регистрация
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            `header_button ${isActive && "active_header_button"}`
-          }
-          to="/app"
         >
           Основа
         </NavLink>
