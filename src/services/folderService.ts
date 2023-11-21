@@ -1,30 +1,27 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IFolder } from "../typeScripts/IFolder";
-
-const token = localStorage.getItem("token");
 export const folderApi = createApi({
   reducerPath: "folderApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://file-store-fe-i3vo.vercel.app/api/files/",
     headers: {
-      Authorization: `Bearer + ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   }),
-  tagTypes: ["Folder"],
+  tagTypes: ["File"],
   endpoints: (build) => ({
-    fetchCreateFolder: build.mutation<IFolder, IFolder>({
+    fetchCreateFolder: build.mutation<any, any>({
       query: (folder) => ({
         url: "createDirectory",
         method: "POST",
-        body: folder,
+        body: String(folder),
       }),
-      invalidatesTags: ["Folder"],
+      invalidatesTags: ["File"],
     }),
-    fetchAllFolder: build.query<IFolder[], any>({
+    fetchAllFolder: build.query<any, any>({
       query: (id) => ({
-        url: "directoryContent/" + { id },
+        url: "directoryContent/" + id,
       }),
-      providesTags: ["Folder"],
+      providesTags: ["File"],
     }),
   }),
 });

@@ -1,0 +1,15 @@
+.img{
+    width: 75px;
+    height: 75px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background: #f3f2f2;
+}
+
+.header_button{
+    margin: 0px 50px;
+}
+

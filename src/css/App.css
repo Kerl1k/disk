@@ -1,14 +1,13 @@
 .app{
-    width: 1850px;
-    height: 850px;
+    min-height: 600px;
+    height: 600px;
     display: flex;
-    margin: 15px;
 }
 
 .left{
     height: 100%;
     width: 20%; 
-    border: 3px solid black;
+    background: #f1e6e6;
 }
 
 .inputDownload {
@@ -38,7 +37,6 @@
 .main{
     height: 100%;
     width: 80%;
-    border: 3px solid black;
 }
 
 .text{
@@ -96,4 +94,8 @@
 .modalInput{
     height: 100px;
     width: 300px;
+}
+
+.back{
+    margin: 15px;
 }

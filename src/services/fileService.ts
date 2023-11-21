@@ -6,7 +6,7 @@ export const fileApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://file-store-fe-i3vo.vercel.app/api/files/",
     headers: {
-      Authorization: `Bearer + ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   }),
   tagTypes: ["File"],
@@ -19,11 +19,13 @@ export const fileApi = createApi({
       }),
       invalidatesTags: ["File"],
     }),
-    fetchDownloadFile: build.query<IFile, string>({
+    fetchDownloadFile: build.mutation<IFile, object>({
       query: (info) => ({
-        url: "uploadFile/" + info,
+        url: "uploadFile",
+        method: "POST",
+        body: info,
       }),
-      providesTags: ["File"],
+      invalidatesTags: ["File"],
     }),
     fetchAllFile: build.query<any, any>({
       query: () => ({
